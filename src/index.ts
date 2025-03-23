@@ -9,7 +9,9 @@ import renderBlock from './renderBlock';
 
 import type { Config } from '@markdoc/markdoc';
 
+// Export all necessary types
 export type MarkdocPluginConfig = { lezer?: any, markdoc: Config };
+export { renderBlock, RichEditPlugin };
 
 export default function (config: MarkdocPluginConfig) {
   const mergedConfig = {

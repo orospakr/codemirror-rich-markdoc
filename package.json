@@ -5,8 +5,17 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc && esbuild src/index.ts --bundle --format=esm '--external:@*' --outfile=dist/index.js",
+    "build": "tsup",
     "prepare": "npm run build"
   },
   "author": "Ryan Paul",
@@ -21,6 +30,7 @@
     "@markdoc/markdoc": "^0.2.1",
     "@types/node": "^18.0.0",
     "esbuild": "^0.16.12",
+    "tsup": "^8.0.2",
     "typescript": "^5.8.2"
   }
 }
