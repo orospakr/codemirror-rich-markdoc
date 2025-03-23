@@ -3,9 +3,11 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
-  dts: true,
-  splitting: false,
+  dts: {
+    resolve: true,
+  },
   sourcemap: true,
+  splitting: false,
   clean: true,
   external: [
     '@codemirror/view',
