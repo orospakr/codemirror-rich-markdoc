@@ -21,3 +21,13 @@ This plugin is inspired by [HyperMD](https://github.com/laobubu/HyperMD), a Code
 * The rendered block replacement code is not yet optimized, so it recomputes all of the replaced regions on every operation instead of only updating them as needed
 * Clicking inside of rendered blocks causes the cursor to be placed at the equivalent position in the document, which may not match the position of the rendered content
 * Nested Markdoc tags do not yet render correctly
+
+## Installation
+
+```bash
+npm install codemirror-rich-markdoc
+```
+
+## TypeScript Support
+
+This library is written in TypeScript and provides type definitions for all public APIs. Type definitions are generated during the build process and included in the published package.
