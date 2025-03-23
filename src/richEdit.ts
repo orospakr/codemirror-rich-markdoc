@@ -46,25 +46,37 @@ export default class RichEditPlugin implements PluginValue {
       syntaxTree(view.state).iterate({
         from, to,
         enter(node) {
-          if (node.name === 'MarkdocTag')
+          if (node.name === 'MarkdocTag') {
             widgets.push(decorationTag.range(node.from, node.to));
+            return;
+          }
 
-          if (node.name === 'FencedCode')
+          if (node.name === 'FencedCode') {
             widgets.push(decorationCode.range(node.from, node.to));
+            return;
+          }
 
           if ((node.name.startsWith('ATXHeading') || tokenElement.includes(node.name)) &&
             cursor.from >= node.from && cursor.to <= node.to)
             return false;
 
           if (node.name === 'ListMark' && node.matchContext(['BulletList', 'ListItem']) &&
-            cursor.from != node.from && cursor.from != node.from + 1)
+            cursor.from != node.from && cursor.from != node.from + 1) {
             widgets.push(decorationBullet.range(node.from, node.to));
+            return;
+          }
 
-          if (node.name === 'HeaderMark')
+          if (node.name === 'HeaderMark') {
             widgets.push(decorationHidden.range(node.from, node.to + 1));
+            return;
+          }
 
-          if (tokenHidden.includes(node.name))
+          if (tokenHidden.includes(node.name)) {
             widgets.push(decorationHidden.range(node.from, node.to));
+            return;
+          }
+          
+          return;
         }
       });
     }

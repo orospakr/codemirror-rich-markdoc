@@ -80,6 +80,7 @@ function replaceBlocks(state: EditorState, config: Config, from?: number, to?: n
       });
 
       decorations.push(decoration.range(node.from, node.to));
+      return;
     }
   });
 
@@ -103,7 +104,7 @@ export default function (config: Config) {
       return RangeSet.of(replaceBlocks(state, config), true);
     },
 
-    update(decorations, transaction) {
+    update(_decorations, transaction) {
       return RangeSet.of(replaceBlocks(transaction.state, config), true);
     },
 

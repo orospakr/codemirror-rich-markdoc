@@ -19,7 +19,7 @@ export default function (config: MarkdocPluginConfig) {
 
   return ViewPlugin.fromClass(RichEditPlugin, {
     decorations: v => v.decorations,
-    provide: v => [
+    provide: () => [
       renderBlock(config.markdoc),
       syntaxHighlighting(highlightStyle),
       markdown(mergedConfig)
